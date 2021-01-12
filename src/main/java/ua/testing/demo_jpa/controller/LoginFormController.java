@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import ua.testing.demo_jpa.dto.RegistrationUser;
 import ua.testing.demo_jpa.dto.UserDTO;
 import ua.testing.demo_jpa.dto.UsersDTO;
 import ua.testing.demo_jpa.entity.RoleType;
@@ -37,8 +38,15 @@ public class LoginFormController {
     }
 
     @PostMapping(value = "register")
-    public void registerFormController(UserDTO user) {
-
+    public void registerFormController(RegistrationUser user) {
+        log.info("Registration controller level -> {}", user.toString());
+        userService.saveNewUser(User.builder()
+                .firstName(user.getFirstName())
+                .lastName(user.getSecondName())
+                .email(user.getEmail())
+                .role(RoleType.ROLE_USER)
+                .build()
+        );
     }
 
     @RequestMapping(value = "user", method = RequestMethod.GET)

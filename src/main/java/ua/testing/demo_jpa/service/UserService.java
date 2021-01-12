@@ -31,7 +31,7 @@ public class UserService {
     }
 
     public void saveNewUser (User user){
-        //TODO inform the user about the replay email
+       log.info("Database level -> {}", user.toString());
         // TODO exception to endpoint
         try {
             userRepository.save(user);

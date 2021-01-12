@@ -15,8 +15,8 @@ public class PageController {
         return "users/index.html";
     }
 
-    /*@RequestMapping("/register")
+    @RequestMapping("/register")
     public String registerPage() {
-        return "users/sign_up.html";
-    }*/
+        return "sign_up.html";
+    }
 }
